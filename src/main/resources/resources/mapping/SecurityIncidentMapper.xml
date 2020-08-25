@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xkcoding.multi.datasource.mybatis.mapper.SecurityIncidentMapper">
+  <resultMap id="BaseResultMap" type="com.xkcoding.multi.datasource.mybatis.model.SecurityIncident">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="SecLevel" jdbcType="VARCHAR" property="seclevel" />
+    <result column="Sec_EventType" jdbcType="VARCHAR" property="secEventtype" />
+    <result column="SecNumber" jdbcType="INTEGER" property="secnumber" />
+    <result column="line_num" jdbcType="VARCHAR" property="lineNum" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, time, SecLevel, Sec_EventType, SecNumber, line_num
+  </sql>
+  <select id="selectByExample" parameterType="com.xkcoding.multi.datasource.mybatis.model.SecurityIncidentExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from security_incident
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from security_incident
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from security_incident
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xkcoding.multi.datasource.mybatis.model.SecurityIncidentExample">
+    delete from security_incident
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xkcoding.multi.datasource.mybatis.model.SecurityIncident">
+    insert into security_incident (id, time, SecLevel, 
+      Sec_EventType, SecNumber, line_num
+      )
+    values (#{id,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP}, #{seclevel,jdbcType=VARCHAR}, 
+      #{secEventtype,jdbcType=VARCHAR}, #{secnumber,jdbcType=INTEGER}, #{lineNum,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xkcoding.multi.datasource.mybatis.model.SecurityIncident">
+    insert into security_incident
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="seclevel != null">
+        SecLevel,
+      </if>
+      <if test="secEventtype != null">
+        Sec_EventType,
+      </if>
+      <if test="secnumber != null">
+        SecNumber,
+      </if>
+      <if test="lineNum != null">
+        line_num,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seclevel != null">
+        #{seclevel,jdbcType=VARCHAR},
+      </if>
+      <if test="secEventtype != null">
+        #{secEventtype,jdbcType=VARCHAR},
+      </if>
+      <if test="secnumber != null">
+        #{secnumber,jdbcType=INTEGER},
+      </if>
+      <if test="lineNum != null">
+        #{lineNum,jdbcType=INTEGER},
+      </if>
+      <if test="endTime != null">
+        #{endTime},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xkcoding.multi.datasource.mybatis.model.SecurityIncidentExample" resultType="java.lang.Long">
+    select count(*) from security_incident
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update security_incident
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.time != null">
+        time = #{record.time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.seclevel != null">
+        SecLevel = #{record.seclevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.secEventtype != null">
+        Sec_EventType = #{record.secEventtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.secnumber != null">
+        SecNumber = #{record.secnumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.lineNum != null">
+        line_num = #{record.lineNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update security_incident
+    set id = #{record.id,jdbcType=INTEGER},
+      time = #{record.time,jdbcType=TIMESTAMP},
+      SecLevel = #{record.seclevel,jdbcType=VARCHAR},
+      Sec_EventType = #{record.secEventtype,jdbcType=VARCHAR},
+      SecNumber = #{record.secnumber,jdbcType=INTEGER},
+      line_num = #{record.lineNum,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xkcoding.multi.datasource.mybatis.model.SecurityIncident">
+    update security_incident
+    <set>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seclevel != null">
+        SecLevel = #{seclevel,jdbcType=VARCHAR},
+      </if>
+      <if test="secEventtype != null">
+        Sec_EventType = #{secEventtype,jdbcType=VARCHAR},
+      </if>
+      <if test="secnumber != null">
+        SecNumber = #{secnumber,jdbcType=INTEGER},
+      </if>
+      <if test="lineNum != null">
+        line_num = #{lineNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xkcoding.multi.datasource.mybatis.model.SecurityIncident">
+    update security_incident
+    set time = #{time,jdbcType=TIMESTAMP},
+      SecLevel = #{seclevel,jdbcType=VARCHAR},
+      Sec_EventType = #{secEventtype,jdbcType=VARCHAR},
+      SecNumber = #{secnumber,jdbcType=INTEGER},
+      line_num = #{lineNum,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

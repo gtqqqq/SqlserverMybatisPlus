@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xkcoding.multi.datasource.mybatis.mapper.ProductionControlTotalMapper">
+  <resultMap id="BaseResultMap" type="com.xkcoding.multi.datasource.mybatis.model.ProductionControlTotal">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="tickets_vol" jdbcType="INTEGER" property="ticketsVol" />
+    <result column="delivered" jdbcType="DECIMAL" property="delivered" />
+    <result column="target_hitted" jdbcType="VARCHAR" property="targetHitted" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, create_time, name, tickets_vol, delivered, target_hitted
+  </sql>
+  <select id="selectByExample" parameterType="com.xkcoding.multi.datasource.mybatis.model.ProductionControlTotalExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from production_control_total
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.xkcoding.multi.datasource.mybatis.model.ProductionControlTotalExample">
+    delete from production_control_total
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xkcoding.multi.datasource.mybatis.model.ProductionControlTotal">
+    insert into production_control_total (id, create_time, name, 
+      tickets_vol, delivered, target_hitted
+      )
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, 
+      #{ticketsVol,jdbcType=INTEGER}, #{delivered,jdbcType=DECIMAL}, #{targetHitted,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xkcoding.multi.datasource.mybatis.model.ProductionControlTotal">
+    insert into production_control_total
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="ticketsVol != null">
+        tickets_vol,
+      </if>
+      <if test="delivered != null">
+        delivered,
+      </if>
+      <if test="targetHitted != null">
+        target_hitted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketsVol != null">
+        #{ticketsVol,jdbcType=INTEGER},
+      </if>
+      <if test="delivered != null">
+        #{delivered,jdbcType=DECIMAL},
+      </if>
+      <if test="targetHitted != null">
+        #{targetHitted,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xkcoding.multi.datasource.mybatis.model.ProductionControlTotalExample" resultType="java.lang.Long">
+    select count(*) from production_control_total
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update production_control_total
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ticketsVol != null">
+        tickets_vol = #{record.ticketsVol,jdbcType=INTEGER},
+      </if>
+      <if test="record.delivered != null">
+        delivered = #{record.delivered,jdbcType=DECIMAL},
+      </if>
+      <if test="record.targetHitted != null">
+        target_hitted = #{record.targetHitted,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update production_control_total
+    set id = #{record.id,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      name = #{record.name,jdbcType=VARCHAR},
+      tickets_vol = #{record.ticketsVol,jdbcType=INTEGER},
+      delivered = #{record.delivered,jdbcType=DECIMAL},
+      target_hitted = #{record.targetHitted,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+
+  <delete id="deleteDataByToDay">
+    delete from production_control_total where DATE_FORMAT(create_time,'%y/%m/%d')=DATE_FORMAT(SYSDATE(),'%y/%m/%d')
+  </delete>
+
+  <insert id="batchInsert" parameterType="java.util.List">
+    insert into production_control_total
+    ( create_time,name,tickets_vol)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (
+      #{item.createTime},
+      #{item.name},
+      #{item.ticketsVol}
+      )
+    </foreach>
+  </insert>
+
+  <select id="selectToDayList" parameterType="java.util.Map" resultType="com.xkcoding.multi.datasource.mybatis.model.ProductionControlTotal">
+    select * from production_control_total where 1=1
+    <if test="type==1">
+      and YEAR(create_time) = #{year} AND  MONTH(create_time) = #{month} AND DAY(create_time)=#{day}
+    </if>
+    <if test="type==2">
+      and YEAR(create_time) = #{year} AND  MONTH(create_time) = #{month}
+    </if>
+    <if test="type==3">
+      and YEAR(create_time) = #{year}
+    </if>
+    <if test="type==null">
+      and DATE_FORMAT(create_time,'%y/%m/%d')=DATE_FORMAT(SYSDATE(),'%y/%m/%d')
+    </if>
+  </select>
+</mapper>

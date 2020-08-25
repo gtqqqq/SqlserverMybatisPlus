@@ -1,0 +1,1129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xkcoding.multi.datasource.mybatis.mapper.DailyComplianceStatisticsMapper">
+  <resultMap id="BaseResultMap" type="com.xkcoding.multi.datasource.mybatis.model.DailyComplianceStatistics">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="work_average" jdbcType="DECIMAL" property="workAverage" />
+    <result column="all_average" jdbcType="DECIMAL" property="allAverage" />
+    <result column="hour_0_ok" jdbcType="DECIMAL" property="hour0Ok" />
+    <result column="hour_0_all" jdbcType="DECIMAL" property="hour0All" />
+    <result column="hour_1_ok" jdbcType="DECIMAL" property="hour1Ok" />
+    <result column="hour_1_all" jdbcType="DECIMAL" property="hour1All" />
+    <result column="hour_2_ok" jdbcType="DECIMAL" property="hour2Ok" />
+    <result column="hour_2_all" jdbcType="DECIMAL" property="hour2All" />
+    <result column="hour_3_ok" jdbcType="DECIMAL" property="hour3Ok" />
+    <result column="hour_3_all" jdbcType="DECIMAL" property="hour3All" />
+    <result column="hour_4_ok" jdbcType="DECIMAL" property="hour4Ok" />
+    <result column="hour_4_all" jdbcType="DECIMAL" property="hour4All" />
+    <result column="hour_5_ok" jdbcType="DECIMAL" property="hour5Ok" />
+    <result column="hour_5_all" jdbcType="DECIMAL" property="hour5All" />
+    <result column="hour_6_ok" jdbcType="DECIMAL" property="hour6Ok" />
+    <result column="hour_6_all" jdbcType="DECIMAL" property="hour6All" />
+    <result column="hour_7_ok" jdbcType="DECIMAL" property="hour7Ok" />
+    <result column="hour_7_all" jdbcType="DECIMAL" property="hour7All" />
+    <result column="hour_8_ok" jdbcType="DECIMAL" property="hour8Ok" />
+    <result column="hour_8_all" jdbcType="DECIMAL" property="hour8All" />
+    <result column="hour_9_ok" jdbcType="DECIMAL" property="hour9Ok" />
+    <result column="hour_9_all" jdbcType="DECIMAL" property="hour9All" />
+    <result column="hour_10_ok" jdbcType="DECIMAL" property="hour10Ok" />
+    <result column="hour_10_all" jdbcType="DECIMAL" property="hour10All" />
+    <result column="hour_11_ok" jdbcType="DECIMAL" property="hour11Ok" />
+    <result column="hour_11_all" jdbcType="DECIMAL" property="hour11All" />
+    <result column="hour_12_ok" jdbcType="DECIMAL" property="hour12Ok" />
+    <result column="hour_12_all" jdbcType="DECIMAL" property="hour12All" />
+    <result column="hour_13_ok" jdbcType="DECIMAL" property="hour13Ok" />
+    <result column="hour_13_all" jdbcType="DECIMAL" property="hour13All" />
+    <result column="hour_14_ok" jdbcType="DECIMAL" property="hour14Ok" />
+    <result column="hour_14_all" jdbcType="DECIMAL" property="hour14All" />
+    <result column="hour_15_ok" jdbcType="DECIMAL" property="hour15Ok" />
+    <result column="hour_15_all" jdbcType="DECIMAL" property="hour15All" />
+    <result column="hour_16_ok" jdbcType="DECIMAL" property="hour16Ok" />
+    <result column="hour_16_all" jdbcType="DECIMAL" property="hour16All" />
+    <result column="hour_17_ok" jdbcType="DECIMAL" property="hour17Ok" />
+    <result column="hour_17_all" jdbcType="DECIMAL" property="hour17All" />
+    <result column="hour_18_ok" jdbcType="DECIMAL" property="hour18Ok" />
+    <result column="hour_18_all" jdbcType="DECIMAL" property="hour18All" />
+    <result column="hour_19_ok" jdbcType="DECIMAL" property="hour19Ok" />
+    <result column="hour_19_all" jdbcType="DECIMAL" property="hour19All" />
+    <result column="hour_20_ok" jdbcType="DECIMAL" property="hour20Ok" />
+    <result column="hour_20_all" jdbcType="DECIMAL" property="hour20All" />
+    <result column="hour_21_ok" jdbcType="DECIMAL" property="hour21Ok" />
+    <result column="hour_21_all" jdbcType="DECIMAL" property="hour21All" />
+    <result column="hour_22_ok" jdbcType="DECIMAL" property="hour22Ok" />
+    <result column="hour_22_all" jdbcType="DECIMAL" property="hour22All" />
+    <result column="hour_23_ok" jdbcType="DECIMAL" property="hour23Ok" />
+    <result column="hour_23_all" jdbcType="DECIMAL" property="hour23All" />
+    <result column="work_daily_cases" jdbcType="INTEGER" property="workDailyCases" />
+    <result column="all_daily_cases" jdbcType="INTEGER" property="allDailyCases" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="group_name" jdbcType="VARCHAR" property="groupName" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, create_time, work_average, all_average, hour_0_ok, hour_0_all, hour_1_ok, hour_1_all, 
+    hour_2_ok, hour_2_all, hour_3_ok, hour_3_all, hour_4_ok, hour_4_all, hour_5_ok, hour_5_all, 
+    hour_6_ok, hour_6_all, hour_7_ok, hour_7_all, hour_8_ok, hour_8_all, hour_9_ok, hour_9_all, 
+    hour_10_ok, hour_10_all, hour_11_ok, hour_11_all, hour_12_ok, hour_12_all, hour_13_ok, 
+    hour_13_all, hour_14_ok, hour_14_all, hour_15_ok, hour_15_all, hour_16_ok, hour_16_all, 
+    hour_17_ok, hour_17_all, hour_18_ok, hour_18_all, hour_19_ok, hour_19_all, hour_20_ok, 
+    hour_20_all, hour_21_ok, hour_21_all, hour_22_ok, hour_22_all, hour_23_ok, hour_23_all, 
+    work_daily_cases, all_daily_cases, type, group_name
+  </sql>
+  <select id="selectByExample" parameterType="com.xkcoding.multi.datasource.mybatis.model.DailyComplianceStatisticsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from daily_compliance_statistics
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.xkcoding.multi.datasource.mybatis.model.DailyComplianceStatisticsExample">
+    delete from daily_compliance_statistics
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xkcoding.multi.datasource.mybatis.model.DailyComplianceStatistics">
+    insert into daily_compliance_statistics (
+    <if test="id != null">
+      id,
+    </if>
+    <if test="createTime != null">
+      create_time,
+    </if>
+    <if test="workAverage != null">
+      work_average,
+    </if>
+    <if test="allAverage != null">
+      all_average,
+    </if>
+    <if test="hour0Ok != null">
+      hour_0_ok,
+    </if>
+    <if test="hour0All != null">
+      hour_0_all,
+    </if>
+    <if test="hour1Ok != null">
+      hour_1_ok,
+    </if>
+    <if test="hour1All != null">
+      hour_1_all,
+    </if>
+    <if test="hour2Ok != null">
+      hour_2_ok,
+    </if>
+    <if test="hour2All != null">
+      hour_2_all,
+    </if>
+    <if test="hour3Ok != null">
+      hour_3_ok,
+    </if>
+    <if test="hour3All != null">
+      hour_3_all,
+    </if>
+    <if test="hour4Ok != null">
+      hour_4_ok,
+    </if>
+    <if test="hour4All != null">
+      hour_4_all,
+    </if>
+    <if test="hour5Ok != null">
+      hour_5_ok,
+    </if>
+    <if test="hour5All != null">
+      hour_5_all,
+    </if>
+    <if test="hour6Ok != null">
+      hour_6_ok,
+    </if>
+    <if test="hour6All != null">
+      hour_6_all,
+    </if>
+    <if test="hour7Ok != null">
+      hour_7_ok,
+    </if>
+    <if test="hour7All != null">
+      hour_7_all,
+    </if>
+    <if test="hour8Ok != null">
+      hour_8_ok,
+    </if>
+    <if test="hour8All != null">
+      hour_8_all,
+    </if>
+    <if test="hour9Ok != null">
+      hour_9_ok,
+    </if>
+    <if test="hour9All != null">
+      hour_9_all,
+    </if>
+    <if test="hour10Ok != null">
+      hour_10_ok,
+    </if>
+    <if test="hour10All != null">
+      hour_10_all,
+    </if>
+    <if test="hour11Ok != null">
+      hour_11_ok,
+    </if>
+    <if test="hour11All != null">
+      hour_11_all,
+    </if>
+    <if test="hour12Ok != null">
+      hour_12_ok,
+    </if>
+    <if test="hour12All != null">
+      hour_12_all,
+    </if>
+    <if test="hour13Ok != null">
+      hour_13_ok,
+    </if>
+    <if test="hour13All != null">
+      hour_13_all,
+    </if>
+    <if test="hour14Ok != null">
+      hour_14_ok,
+    </if>
+    <if test="hour14All != null">
+      hour_14_all,
+    </if>
+    <if test="hour15Ok != null">
+      hour_15_ok,
+    </if>
+    <if test="hour15All != null">
+      hour_15_all,
+    </if>
+    <if test="hour16Ok != null">
+      hour_16_ok,
+    </if>
+    <if test="hour16All != null">
+      hour_16_all,
+    </if>
+    <if test="hour17Ok != null">
+      hour_17_ok,
+    </if>
+    <if test="hour17All != null">
+      hour_17_all,
+    </if>
+    <if test="hour18Ok != null">
+      hour_18_ok,
+    </if>
+    <if test="hour18All != null">
+      hour_18_all,
+    </if>
+    <if test="hour19Ok != null">
+      hour_19_ok,
+    </if>
+    <if test="hour19All != null">
+      hour_19_all,
+    </if>
+    <if test="hour20Ok != null">
+      hour_20_ok,
+    </if>
+    <if test="hour20All != null">
+      hour_20_all,
+    </if>
+    <if test="hour21Ok != null">
+      hour_21_ok,
+    </if>
+    <if test="hour21All != null">
+      hour_21_all,
+    </if>
+    <if test="hour22Ok != null">
+      hour_22_ok,
+    </if>
+    <if test="hour22All != null">
+      hour_22_all,
+    </if>
+    <if test="hour23Ok != null">
+      hour_23_ok,
+    </if>
+    <if test="hour23All != null">
+      hour_23_all,
+    </if>
+    <if test="workDailyCases != null">
+      work_daily_cases,
+    </if>
+    <if test="allDailyCases != null">
+      all_daily_cases,
+    </if>
+    <if test="type != null">
+      type,
+    </if>
+    <if test="groupName != null">
+      group_name,
+    </if>
+    <if test="resolved != null">
+      resolved,
+    </if>
+    <if test="endTime != null">
+      end_time
+    </if>
+    )
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+    <if test="id != null">
+      #{id,jdbcType=INTEGER},
+    </if>
+    <if test="createTime != null">
+      #{createTime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="workAverage != null">
+      #{workAverage,jdbcType=DECIMAL},
+    </if>
+    <if test="allAverage != null">
+      #{allAverage,jdbcType=DECIMAL},
+    </if>
+    <if test="hour0Ok != null">
+      #{hour0Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour0All != null">
+      #{hour0All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour1Ok != null">
+      #{hour1Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour1All != null">
+      #{hour1All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour2Ok != null">
+      #{hour2Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour2All != null">
+      #{hour2All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour3Ok != null">
+      #{hour3Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour3All != null">
+      #{hour3All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour4Ok != null">
+      #{hour4Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour4All != null">
+      #{hour4All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour5Ok != null">
+      #{hour5Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour5All != null">
+      #{hour5All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour6Ok != null">
+      #{hour6Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour6All != null">
+      #{hour6All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour7Ok != null">
+      #{hour7Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour7All != null">
+      #{hour7All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour8Ok != null">
+      #{hour8Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour8All != null">
+      #{hour8All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour9Ok != null">
+      #{hour9Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour9All != null">
+      #{hour9All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour10Ok != null">
+      #{hour10Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour10All != null">
+      #{hour10All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour11Ok != null">
+      #{hour11Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour11All != null">
+      #{hour11All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour12Ok != null">
+      #{hour12Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour12All != null">
+      #{hour12All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour13Ok != null">
+      #{hour13Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour13All != null">
+      #{hour13All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour14Ok != null">
+      #{hour14Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour14All != null">
+      #{hour14All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour15Ok != null">
+      #{hour15Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour15All != null">
+      #{hour15All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour16Ok != null">
+      #{hour16Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour16All != null">
+      #{hour16All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour17Ok != null">
+      #{hour17Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour17All != null">
+      #{hour17All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour18Ok != null">
+      #{hour18Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour18All != null">
+      #{hour18All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour19Ok != null">
+      #{hour19Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour19All != null">
+      #{hour19All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour20Ok != null">
+      #{hour20Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour20All != null">
+      #{hour20All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour21Ok != null">
+      #{hour21Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour21All != null">
+      #{hour21All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour22Ok != null">
+      #{hour22Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour22All != null">
+      #{hour22All,jdbcType=DECIMAL},
+    </if>
+    <if test="hour23Ok != null">
+      #{hour23Ok,jdbcType=DECIMAL},
+    </if>
+    <if test="hour23All != null">
+      #{hour23All,jdbcType=DECIMAL},
+    </if>
+    <if test="workDailyCases != null">
+      #{workDailyCases,jdbcType=INTEGER},
+    </if>
+    <if test="allDailyCases != null">
+      #{allDailyCases,jdbcType=INTEGER},
+    </if>
+    <if test="type != null">
+      #{type,jdbcType=VARCHAR},
+    </if>
+    <if test="groupName != null">
+      #{groupName,jdbcType=VARCHAR},
+    </if>
+    <if test="resolved != null">
+      #{resolved},
+    </if>
+    <if test="endTime != null">
+      #{endTime}
+     </if>
+
+    </trim>
+
+  </insert>
+  <insert id="insertSelective" parameterType="com.xkcoding.multi.datasource.mybatis.model.DailyComplianceStatistics">
+    insert into daily_compliance_statistics
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="workAverage != null">
+        work_average,
+      </if>
+      <if test="allAverage != null">
+        all_average,
+      </if>
+      <if test="hour0Ok != null">
+        hour_0_ok,
+      </if>
+      <if test="hour0All != null">
+        hour_0_all,
+      </if>
+      <if test="hour1Ok != null">
+        hour_1_ok,
+      </if>
+      <if test="hour1All != null">
+        hour_1_all,
+      </if>
+      <if test="hour2Ok != null">
+        hour_2_ok,
+      </if>
+      <if test="hour2All != null">
+        hour_2_all,
+      </if>
+      <if test="hour3Ok != null">
+        hour_3_ok,
+      </if>
+      <if test="hour3All != null">
+        hour_3_all,
+      </if>
+      <if test="hour4Ok != null">
+        hour_4_ok,
+      </if>
+      <if test="hour4All != null">
+        hour_4_all,
+      </if>
+      <if test="hour5Ok != null">
+        hour_5_ok,
+      </if>
+      <if test="hour5All != null">
+        hour_5_all,
+      </if>
+      <if test="hour6Ok != null">
+        hour_6_ok,
+      </if>
+      <if test="hour6All != null">
+        hour_6_all,
+      </if>
+      <if test="hour7Ok != null">
+        hour_7_ok,
+      </if>
+      <if test="hour7All != null">
+        hour_7_all,
+      </if>
+      <if test="hour8Ok != null">
+        hour_8_ok,
+      </if>
+      <if test="hour8All != null">
+        hour_8_all,
+      </if>
+      <if test="hour9Ok != null">
+        hour_9_ok,
+      </if>
+      <if test="hour9All != null">
+        hour_9_all,
+      </if>
+      <if test="hour10Ok != null">
+        hour_10_ok,
+      </if>
+      <if test="hour10All != null">
+        hour_10_all,
+      </if>
+      <if test="hour11Ok != null">
+        hour_11_ok,
+      </if>
+      <if test="hour11All != null">
+        hour_11_all,
+      </if>
+      <if test="hour12Ok != null">
+        hour_12_ok,
+      </if>
+      <if test="hour12All != null">
+        hour_12_all,
+      </if>
+      <if test="hour13Ok != null">
+        hour_13_ok,
+      </if>
+      <if test="hour13All != null">
+        hour_13_all,
+      </if>
+      <if test="hour14Ok != null">
+        hour_14_ok,
+      </if>
+      <if test="hour14All != null">
+        hour_14_all,
+      </if>
+      <if test="hour15Ok != null">
+        hour_15_ok,
+      </if>
+      <if test="hour15All != null">
+        hour_15_all,
+      </if>
+      <if test="hour16Ok != null">
+        hour_16_ok,
+      </if>
+      <if test="hour16All != null">
+        hour_16_all,
+      </if>
+      <if test="hour17Ok != null">
+        hour_17_ok,
+      </if>
+      <if test="hour17All != null">
+        hour_17_all,
+      </if>
+      <if test="hour18Ok != null">
+        hour_18_ok,
+      </if>
+      <if test="hour18All != null">
+        hour_18_all,
+      </if>
+      <if test="hour19Ok != null">
+        hour_19_ok,
+      </if>
+      <if test="hour19All != null">
+        hour_19_all,
+      </if>
+      <if test="hour20Ok != null">
+        hour_20_ok,
+      </if>
+      <if test="hour20All != null">
+        hour_20_all,
+      </if>
+      <if test="hour21Ok != null">
+        hour_21_ok,
+      </if>
+      <if test="hour21All != null">
+        hour_21_all,
+      </if>
+      <if test="hour22Ok != null">
+        hour_22_ok,
+      </if>
+      <if test="hour22All != null">
+        hour_22_all,
+      </if>
+      <if test="hour23Ok != null">
+        hour_23_ok,
+      </if>
+      <if test="hour23All != null">
+        hour_23_all,
+      </if>
+      <if test="workDailyCases != null">
+        work_daily_cases,
+      </if>
+      <if test="allDailyCases != null">
+        all_daily_cases,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="groupName != null">
+        group_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="workAverage != null">
+        #{workAverage,jdbcType=DECIMAL},
+      </if>
+      <if test="allAverage != null">
+        #{allAverage,jdbcType=DECIMAL},
+      </if>
+      <if test="hour0Ok != null">
+        #{hour0Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour0All != null">
+        #{hour0All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour1Ok != null">
+        #{hour1Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour1All != null">
+        #{hour1All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour2Ok != null">
+        #{hour2Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour2All != null">
+        #{hour2All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour3Ok != null">
+        #{hour3Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour3All != null">
+        #{hour3All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour4Ok != null">
+        #{hour4Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour4All != null">
+        #{hour4All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour5Ok != null">
+        #{hour5Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour5All != null">
+        #{hour5All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour6Ok != null">
+        #{hour6Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour6All != null">
+        #{hour6All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour7Ok != null">
+        #{hour7Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour7All != null">
+        #{hour7All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour8Ok != null">
+        #{hour8Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour8All != null">
+        #{hour8All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour9Ok != null">
+        #{hour9Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour9All != null">
+        #{hour9All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour10Ok != null">
+        #{hour10Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour10All != null">
+        #{hour10All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour11Ok != null">
+        #{hour11Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour11All != null">
+        #{hour11All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour12Ok != null">
+        #{hour12Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour12All != null">
+        #{hour12All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour13Ok != null">
+        #{hour13Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour13All != null">
+        #{hour13All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour14Ok != null">
+        #{hour14Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour14All != null">
+        #{hour14All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour15Ok != null">
+        #{hour15Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour15All != null">
+        #{hour15All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour16Ok != null">
+        #{hour16Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour16All != null">
+        #{hour16All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour17Ok != null">
+        #{hour17Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour17All != null">
+        #{hour17All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour18Ok != null">
+        #{hour18Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour18All != null">
+        #{hour18All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour19Ok != null">
+        #{hour19Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour19All != null">
+        #{hour19All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour20Ok != null">
+        #{hour20Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour20All != null">
+        #{hour20All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour21Ok != null">
+        #{hour21Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour21All != null">
+        #{hour21All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour22Ok != null">
+        #{hour22Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour22All != null">
+        #{hour22All,jdbcType=DECIMAL},
+      </if>
+      <if test="hour23Ok != null">
+        #{hour23Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="hour23All != null">
+        #{hour23All,jdbcType=DECIMAL},
+      </if>
+      <if test="workDailyCases != null">
+        #{workDailyCases,jdbcType=INTEGER},
+      </if>
+      <if test="allDailyCases != null">
+        #{allDailyCases,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="groupName != null">
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xkcoding.multi.datasource.mybatis.model.DailyComplianceStatisticsExample" resultType="java.lang.Long">
+    select count(*) from daily_compliance_statistics
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update daily_compliance_statistics
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.workAverage != null">
+        work_average = #{record.workAverage,jdbcType=DECIMAL},
+      </if>
+      <if test="record.allAverage != null">
+        all_average = #{record.allAverage,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour0Ok != null">
+        hour_0_ok = #{record.hour0Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour0All != null">
+        hour_0_all = #{record.hour0All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour1Ok != null">
+        hour_1_ok = #{record.hour1Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour1All != null">
+        hour_1_all = #{record.hour1All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour2Ok != null">
+        hour_2_ok = #{record.hour2Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour2All != null">
+        hour_2_all = #{record.hour2All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour3Ok != null">
+        hour_3_ok = #{record.hour3Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour3All != null">
+        hour_3_all = #{record.hour3All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour4Ok != null">
+        hour_4_ok = #{record.hour4Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour4All != null">
+        hour_4_all = #{record.hour4All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour5Ok != null">
+        hour_5_ok = #{record.hour5Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour5All != null">
+        hour_5_all = #{record.hour5All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour6Ok != null">
+        hour_6_ok = #{record.hour6Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour6All != null">
+        hour_6_all = #{record.hour6All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour7Ok != null">
+        hour_7_ok = #{record.hour7Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour7All != null">
+        hour_7_all = #{record.hour7All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour8Ok != null">
+        hour_8_ok = #{record.hour8Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour8All != null">
+        hour_8_all = #{record.hour8All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour9Ok != null">
+        hour_9_ok = #{record.hour9Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour9All != null">
+        hour_9_all = #{record.hour9All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour10Ok != null">
+        hour_10_ok = #{record.hour10Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour10All != null">
+        hour_10_all = #{record.hour10All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour11Ok != null">
+        hour_11_ok = #{record.hour11Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour11All != null">
+        hour_11_all = #{record.hour11All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour12Ok != null">
+        hour_12_ok = #{record.hour12Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour12All != null">
+        hour_12_all = #{record.hour12All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour13Ok != null">
+        hour_13_ok = #{record.hour13Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour13All != null">
+        hour_13_all = #{record.hour13All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour14Ok != null">
+        hour_14_ok = #{record.hour14Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour14All != null">
+        hour_14_all = #{record.hour14All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour15Ok != null">
+        hour_15_ok = #{record.hour15Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour15All != null">
+        hour_15_all = #{record.hour15All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour16Ok != null">
+        hour_16_ok = #{record.hour16Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour16All != null">
+        hour_16_all = #{record.hour16All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour17Ok != null">
+        hour_17_ok = #{record.hour17Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour17All != null">
+        hour_17_all = #{record.hour17All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour18Ok != null">
+        hour_18_ok = #{record.hour18Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour18All != null">
+        hour_18_all = #{record.hour18All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour19Ok != null">
+        hour_19_ok = #{record.hour19Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour19All != null">
+        hour_19_all = #{record.hour19All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour20Ok != null">
+        hour_20_ok = #{record.hour20Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour20All != null">
+        hour_20_all = #{record.hour20All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour21Ok != null">
+        hour_21_ok = #{record.hour21Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour21All != null">
+        hour_21_all = #{record.hour21All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour22Ok != null">
+        hour_22_ok = #{record.hour22Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour22All != null">
+        hour_22_all = #{record.hour22All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour23Ok != null">
+        hour_23_ok = #{record.hour23Ok,jdbcType=DECIMAL},
+      </if>
+      <if test="record.hour23All != null">
+        hour_23_all = #{record.hour23All,jdbcType=DECIMAL},
+      </if>
+      <if test="record.workDailyCases != null">
+        work_daily_cases = #{record.workDailyCases,jdbcType=INTEGER},
+      </if>
+      <if test="record.allDailyCases != null">
+        all_daily_cases = #{record.allDailyCases,jdbcType=INTEGER},
+      </if>
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.groupName != null">
+        group_name = #{record.groupName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update daily_compliance_statistics
+    set id = #{record.id,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      work_average = #{record.workAverage,jdbcType=DECIMAL},
+      all_average = #{record.allAverage,jdbcType=DECIMAL},
+      hour_0_ok = #{record.hour0Ok,jdbcType=DECIMAL},
+      hour_0_all = #{record.hour0All,jdbcType=DECIMAL},
+      hour_1_ok = #{record.hour1Ok,jdbcType=DECIMAL},
+      hour_1_all = #{record.hour1All,jdbcType=DECIMAL},
+      hour_2_ok = #{record.hour2Ok,jdbcType=DECIMAL},
+      hour_2_all = #{record.hour2All,jdbcType=DECIMAL},
+      hour_3_ok = #{record.hour3Ok,jdbcType=DECIMAL},
+      hour_3_all = #{record.hour3All,jdbcType=DECIMAL},
+      hour_4_ok = #{record.hour4Ok,jdbcType=DECIMAL},
+      hour_4_all = #{record.hour4All,jdbcType=DECIMAL},
+      hour_5_ok = #{record.hour5Ok,jdbcType=DECIMAL},
+      hour_5_all = #{record.hour5All,jdbcType=DECIMAL},
+      hour_6_ok = #{record.hour6Ok,jdbcType=DECIMAL},
+      hour_6_all = #{record.hour6All,jdbcType=DECIMAL},
+      hour_7_ok = #{record.hour7Ok,jdbcType=DECIMAL},
+      hour_7_all = #{record.hour7All,jdbcType=DECIMAL},
+      hour_8_ok = #{record.hour8Ok,jdbcType=DECIMAL},
+      hour_8_all = #{record.hour8All,jdbcType=DECIMAL},
+      hour_9_ok = #{record.hour9Ok,jdbcType=DECIMAL},
+      hour_9_all = #{record.hour9All,jdbcType=DECIMAL},
+      hour_10_ok = #{record.hour10Ok,jdbcType=DECIMAL},
+      hour_10_all = #{record.hour10All,jdbcType=DECIMAL},
+      hour_11_ok = #{record.hour11Ok,jdbcType=DECIMAL},
+      hour_11_all = #{record.hour11All,jdbcType=DECIMAL},
+      hour_12_ok = #{record.hour12Ok,jdbcType=DECIMAL},
+      hour_12_all = #{record.hour12All,jdbcType=DECIMAL},
+      hour_13_ok = #{record.hour13Ok,jdbcType=DECIMAL},
+      hour_13_all = #{record.hour13All,jdbcType=DECIMAL},
+      hour_14_ok = #{record.hour14Ok,jdbcType=DECIMAL},
+      hour_14_all = #{record.hour14All,jdbcType=DECIMAL},
+      hour_15_ok = #{record.hour15Ok,jdbcType=DECIMAL},
+      hour_15_all = #{record.hour15All,jdbcType=DECIMAL},
+      hour_16_ok = #{record.hour16Ok,jdbcType=DECIMAL},
+      hour_16_all = #{record.hour16All,jdbcType=DECIMAL},
+      hour_17_ok = #{record.hour17Ok,jdbcType=DECIMAL},
+      hour_17_all = #{record.hour17All,jdbcType=DECIMAL},
+      hour_18_ok = #{record.hour18Ok,jdbcType=DECIMAL},
+      hour_18_all = #{record.hour18All,jdbcType=DECIMAL},
+      hour_19_ok = #{record.hour19Ok,jdbcType=DECIMAL},
+      hour_19_all = #{record.hour19All,jdbcType=DECIMAL},
+      hour_20_ok = #{record.hour20Ok,jdbcType=DECIMAL},
+      hour_20_all = #{record.hour20All,jdbcType=DECIMAL},
+      hour_21_ok = #{record.hour21Ok,jdbcType=DECIMAL},
+      hour_21_all = #{record.hour21All,jdbcType=DECIMAL},
+      hour_22_ok = #{record.hour22Ok,jdbcType=DECIMAL},
+      hour_22_all = #{record.hour22All,jdbcType=DECIMAL},
+      hour_23_ok = #{record.hour23Ok,jdbcType=DECIMAL},
+      hour_23_all = #{record.hour23All,jdbcType=DECIMAL},
+      work_daily_cases = #{record.workDailyCases,jdbcType=INTEGER},
+      all_daily_cases = #{record.allDailyCases,jdbcType=INTEGER},
+      type = #{record.type,jdbcType=VARCHAR},
+      group_name = #{record.groupName,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+
+  <delete id="deleteDataByToDay">
+    DELETE FROM daily_compliance_statistics WHERE type="SLA"
+  </delete>
+
+  <select id="selectToDayList" parameterType="java.util.Map" resultType="com.xkcoding.multi.datasource.mybatis.model.DailyComplianceStatistics">
+    select * from daily_compliance_statistics where type="SLA"
+    <if test="type==1">
+      and YEAR(Resolved) = #{year} AND  MONTH(Resolved) = #{month} AND DAY(Resolved)=#{day}
+    </if>
+    <if test="type==2">
+      and YEAR(Resolved) = #{year} AND  MONTH(Resolved) = #{month}
+    </if>
+    <if test="type==3">
+      and YEAR(Resolved) = #{year}
+    </if>
+    <if test="type==null">
+      and DATE_FORMAT(Resolved,'%y/%m/%d')=DATE_FORMAT(SYSDATE(),'%y/%m/%d')
+    </if>
+  </select>
+
+  <delete id="deleteYestToDayL2Sla">
+    DELETE FROM daily_compliance_statistics WHERE DATE_FORMAT(create_time,'%y/%m/%d')=DATE_FORMAT(DATE_ADD(SYSDATE(),INTERVAL -1 DAY),'%y/%m/%d') AND type="SLA"
+  </delete>
+
+  <delete id="deleteYestToDayL2Req">
+    DELETE FROM daily_compliance_statistics WHERE DATE_FORMAT(create_time,'%y/%m/%d')=DATE_FORMAT(DATE_ADD(SYSDATE(),INTERVAL -1 DAY),'%y/%m/%d') AND type="REQ"
+  </delete>
+
+  <delete id="deleteReqDataByToDay">
+    DELETE FROM daily_compliance_statistics WHERE  type="REQ"
+  </delete>
+
+
+</mapper>

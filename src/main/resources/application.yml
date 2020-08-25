@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    primary:
+      max-wait: 90000
+    dynamic:
+      datasource:
+        master:
+          username: root
+          password: guan543-
+          #url: jdbc:mysql://127.0.0.1:3306/spring-boot-demo?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=GMT%2B8
+          url: jdbc:mysql://118.89.222.159:3301/servicenow_innovate?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=GMT%2B8
+          driver-class-name: com.mysql.jdbc.Driver
+        slave:
+          #username: manager
+          #password: '@WSX1qaz'
+          #username: root
+          #password: root
+          #url: jdbc:mysql://127.0.0.1:3306/spring-boot-demo-2?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=GMT%2B8
+          #username: root
+          #password: root
+          #url: jdbc:sqlserver://CNDCXD11AC97797:1433;database=TCB;instance=CNDCXD11AC97797
+          url: jdbc:sqlserver://118.89.222.159:1432;DatabaseName=test
+          username: sa
+          password: Guan543543
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      mp-enabled: true
+logging:
+  file: yanfa.log
+  path: c:/mylogs
+  level:
+    #com.xkcoding.multi.datasource.mybatis: info,debug
+    com.xkcoding.multi.datasource.mybatis: info
+
+mybatis-plus:
+  mapper-locations: classpath*:resources/mapping/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+server:
+  port: 8081

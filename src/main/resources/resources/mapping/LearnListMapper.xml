@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xkcoding.multi.datasource.mybatis.mapper.LearnListMapper">
+  <resultMap id="BaseResultMap" type="com.xkcoding.multi.datasource.mybatis.model.LearnList">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="batch_num" jdbcType="INTEGER" property="batchNum" />
+    <result column="start_tiime" jdbcType="TIMESTAMP" property="startTiime" />
+    <result column="learn_person_num" jdbcType="INTEGER" property="learnPersonNum" />
+    <result column="finish_num" jdbcType="INTEGER" property="finishNum" />
+    <result column="one_pass_rate" jdbcType="DECIMAL" property="onePassRate" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="teacher" jdbcType="VARCHAR" property="teacher" />
+    <result column="recode_well" jdbcType="INTEGER" property="recodeWell" />
+    <result column="l_num" jdbcType="VARCHAR" property="lNum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, batch_num, start_tiime, learn_person_num, finish_num, one_pass_rate, create_time, 
+    teacher, recode_well, l_num
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from learn_list
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from learn_list
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xkcoding.multi.datasource.mybatis.model.LearnList">
+    insert into learn_list (id, batch_num, start_tiime, 
+      learn_person_num, finish_num, one_pass_rate, 
+      create_time, teacher, recode_well, 
+      l_num)
+    values (#{id,jdbcType=INTEGER}, #{batchNum,jdbcType=INTEGER}, #{startTiime,jdbcType=TIMESTAMP}, 
+      #{learnPersonNum,jdbcType=INTEGER}, #{finishNum,jdbcType=INTEGER}, #{onePassRate,jdbcType=DECIMAL}, 
+      #{createTime,jdbcType=DATE}, #{teacher,jdbcType=VARCHAR}, #{recodeWell,jdbcType=INTEGER}, 
+      #{lNum,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xkcoding.multi.datasource.mybatis.model.LearnList">
+    insert into learn_list
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="batchNum != null">
+        batch_num,
+      </if>
+      <if test="startTiime != null">
+        start_tiime,
+      </if>
+      <if test="learnPersonNum != null">
+        learn_person_num,
+      </if>
+      <if test="finishNum != null">
+        finish_num,
+      </if>
+      <if test="onePassRate != null">
+        one_pass_rate,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="teacher != null">
+        teacher,
+      </if>
+      <if test="recodeWell != null">
+        recode_well,
+      </if>
+      <if test="lNum != null">
+        l_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="batchNum != null">
+        #{batchNum,jdbcType=INTEGER},
+      </if>
+      <if test="startTiime != null">
+        #{startTiime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="learnPersonNum != null">
+        #{learnPersonNum,jdbcType=INTEGER},
+      </if>
+      <if test="finishNum != null">
+        #{finishNum,jdbcType=INTEGER},
+      </if>
+      <if test="onePassRate != null">
+        #{onePassRate,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="teacher != null">
+        #{teacher,jdbcType=VARCHAR},
+      </if>
+      <if test="recodeWell != null">
+        #{recodeWell,jdbcType=INTEGER},
+      </if>
+      <if test="lNum != null">
+        #{lNum,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xkcoding.multi.datasource.mybatis.model.LearnList">
+    update learn_list
+    <set>
+      <if test="batchNum != null">
+        batch_num = #{batchNum,jdbcType=INTEGER},
+      </if>
+      <if test="startTiime != null">
+        start_tiime = #{startTiime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="learnPersonNum != null">
+        learn_person_num = #{learnPersonNum,jdbcType=INTEGER},
+      </if>
+      <if test="finishNum != null">
+        finish_num = #{finishNum,jdbcType=INTEGER},
+      </if>
+      <if test="onePassRate != null">
+        one_pass_rate = #{onePassRate,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="teacher != null">
+        teacher = #{teacher,jdbcType=VARCHAR},
+      </if>
+      <if test="recodeWell != null">
+        recode_well = #{recodeWell,jdbcType=INTEGER},
+      </if>
+      <if test="lNum != null">
+        l_num = #{lNum,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xkcoding.multi.datasource.mybatis.model.LearnList">
+    update learn_list
+    set batch_num = #{batchNum,jdbcType=INTEGER},
+      start_tiime = #{startTiime,jdbcType=TIMESTAMP},
+      learn_person_num = #{learnPersonNum,jdbcType=INTEGER},
+      finish_num = #{finishNum,jdbcType=INTEGER},
+      one_pass_rate = #{onePassRate,jdbcType=DECIMAL},
+      create_time = #{createTime,jdbcType=DATE},
+      teacher = #{teacher,jdbcType=VARCHAR},
+      recode_well = #{recodeWell,jdbcType=INTEGER},
+      l_num = #{lNum,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

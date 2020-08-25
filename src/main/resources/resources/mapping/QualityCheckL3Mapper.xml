@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xkcoding.multi.datasource.mybatis.mapper.QualityCheckL3Mapper">
+  <resultMap id="BaseResultMap" type="com.xkcoding.multi.datasource.mybatis.model.QualityCheckL3">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="total" jdbcType="INTEGER" property="total" />
+    <result column="check_number" jdbcType="INTEGER" property="checkNumber" />
+    <result column="ok_number" jdbcType="INTEGER" property="okNumber" />
+    <result column="source_type" jdbcType="INTEGER" property="sourceType" />
+    <result column="group_name" jdbcType="VARCHAR" property="groupName" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, create_time, total, check_number, ok_number, source_type, group_name
+  </sql>
+  <select id="selectByExample" parameterType="com.xkcoding.multi.datasource.mybatis.model.QualityCheckL3Example" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from quality_check_l3
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from quality_check_l3
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from quality_check_l3
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xkcoding.multi.datasource.mybatis.model.QualityCheckL3Example">
+    delete from quality_check_l3
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xkcoding.multi.datasource.mybatis.model.QualityCheckL3">
+    insert into quality_check_l3 (id, create_time, total, 
+      check_number, ok_number, source_type, 
+      group_name)
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{total,jdbcType=INTEGER}, 
+      #{checkNumber,jdbcType=INTEGER}, #{okNumber,jdbcType=INTEGER}, #{sourceType,jdbcType=INTEGER}, 
+      #{groupName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xkcoding.multi.datasource.mybatis.model.QualityCheckL3">
+    insert into quality_check_l3
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="total != null">
+        total,
+      </if>
+      <if test="checkNumber != null">
+        check_number,
+      </if>
+      <if test="okNumber != null">
+        ok_number,
+      </if>
+      <if test="sourceType != null">
+        source_type,
+      </if>
+      <if test="groupName != null">
+        group_name,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="total != null">
+        #{total,jdbcType=INTEGER},
+      </if>
+      <if test="checkNumber != null">
+        #{checkNumber,jdbcType=INTEGER},
+      </if>
+      <if test="okNumber != null">
+        #{okNumber,jdbcType=INTEGER},
+      </if>
+      <if test="sourceType != null">
+        #{sourceType,jdbcType=INTEGER},
+      </if>
+      <if test="groupName != null">
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        #{endTime},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xkcoding.multi.datasource.mybatis.model.QualityCheckL3Example" resultType="java.lang.Long">
+    select count(*) from quality_check_l3
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update quality_check_l3
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.total != null">
+        total = #{record.total,jdbcType=INTEGER},
+      </if>
+      <if test="record.checkNumber != null">
+        check_number = #{record.checkNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.okNumber != null">
+        ok_number = #{record.okNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.sourceType != null">
+        source_type = #{record.sourceType,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupName != null">
+        group_name = #{record.groupName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update quality_check_l3
+    set id = #{record.id,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      total = #{record.total,jdbcType=INTEGER},
+      check_number = #{record.checkNumber,jdbcType=INTEGER},
+      ok_number = #{record.okNumber,jdbcType=INTEGER},
+      source_type = #{record.sourceType,jdbcType=INTEGER},
+      group_name = #{record.groupName,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xkcoding.multi.datasource.mybatis.model.QualityCheckL3">
+    update quality_check_l3
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="total != null">
+        total = #{total,jdbcType=INTEGER},
+      </if>
+      <if test="checkNumber != null">
+        check_number = #{checkNumber,jdbcType=INTEGER},
+      </if>
+      <if test="okNumber != null">
+        ok_number = #{okNumber,jdbcType=INTEGER},
+      </if>
+      <if test="sourceType != null">
+        source_type = #{sourceType,jdbcType=INTEGER},
+      </if>
+      <if test="groupName != null">
+        group_name = #{groupName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xkcoding.multi.datasource.mybatis.model.QualityCheckL3">
+    update quality_check_l3
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      total = #{total,jdbcType=INTEGER},
+      check_number = #{checkNumber,jdbcType=INTEGER},
+      ok_number = #{okNumber,jdbcType=INTEGER},
+      source_type = #{sourceType,jdbcType=INTEGER},
+      group_name = #{groupName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <delete id="deleteDataByToDay">
+    DELETE FROM quality_check_l1 WHERE 1=1
+  </delete>
+</mapper>
